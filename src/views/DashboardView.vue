@@ -1,5 +1,5 @@
 <template>
-    <div class="navbar">
+    <div class="bg-blue-400">
       <div class="navbar-container">
         <section>
           <img src="/src/assets/img/car.png" alt="" />
