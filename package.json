@@ -5,7 +5,6 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "sass": "sass --watch src/assets/sass/main.sass:src/assets/css/main.css",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -16,7 +15,6 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
-    "sass": "^1.77.1",
-    "vite": "^5.2.8"
+    "sass": "^1.77.1"
   }
 }
