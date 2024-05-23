@@ -1,6 +1,6 @@
 <template>
-    <div class="gestao-veiculos">
-      <div class="gestao-veiculos-container">
+    <div class="d-flex justify-content-center align-items-center vh-100">
+      <div class="">
         <TituloPagina
           titulo="Gestão de veículos"
           class="gestao-veiculos-container-title"
