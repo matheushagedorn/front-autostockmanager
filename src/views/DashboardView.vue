@@ -58,5 +58,9 @@
       name: "Gestão de veículos",
       href: "/gestao-veiculos",
     },
+    {
+      name: "Usuários",
+      href: "/usuarios",
+    },
   ];
   </script>
