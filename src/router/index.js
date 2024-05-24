@@ -35,8 +35,8 @@ const router = createRouter({
           component: GestaoVeiculosView
         },
         {
-          path: '/usuarios', 
-          name: 'usuarios',
+          path: '/gestao-usuarios', 
+          name: 'gestao-usuarios',
           component: GestaoUsuariosView
         },
       ]
