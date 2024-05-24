@@ -53,7 +53,6 @@ function menuUsuario() {
 }
 
 function editarPerfil() {
-  // Adicione a lógica para editar o perfil aqui
   console.log("Editar perfil clicado");
 }
 
@@ -65,6 +64,10 @@ const modulos = [
   {
     name: "Gestão de veículos",
     href: "/gestao-veiculos",
+  },
+  {
+    name: "Gestão de usuários",
+    href: "/gestao-usuarios",
   },
 ];
 </script>

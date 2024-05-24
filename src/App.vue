@@ -1,16 +1,16 @@
 <script setup>
 import { onBeforeMount } from 'vue'
-import { useRouter } from 'vue-router' // Removi RouterView daqui, pois não é necessário
+import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
 onBeforeMount(() => {
-  router.push({ name: 'login' }) // Aqui ocorre o erro
+  router.push({ name: 'login' })
 })
 </script>
 
 <template>
-  <div>
+  <div class="vh-100">
     <router-view/>
   </div>
 </template>
