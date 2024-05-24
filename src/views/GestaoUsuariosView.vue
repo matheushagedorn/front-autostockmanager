@@ -27,7 +27,7 @@
               </button>
               <ul class="dropdown-menu">
                 <li>
-                  <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal_edicao" @click="editUser(usuario.id, false)">
+                  <button class="dropdown-item" @click="activateUser(usuario.id)">
                     <i :class="['fa-solid', usuario.ativo ? 'fa-xmark' : 'fa-check']"></i> Ativar/Inativar
                   </button>
                 </li>
@@ -78,7 +78,7 @@
         </div>
         <div class="modal-footer d-flex justify-content-between">
           <button type="button" class="btn btn-outline-danger" @click="deleteUser(idusuario)"><i class="fa-solid fa-trash pe-2"></i>Excluir</button>
-          <button type="button" class="btn btn-outline-success" @click="editUser(idusuario, true)">Salvar alterações<i class="fa-solid fa-pen ps-2"></i></button>
+          <button type="button" class="btn btn-outline-success" @click="updateUser(idusuario)">Salvar alterações<i class="fa-solid fa-pen ps-2"></i></button>
         </div>
       </div>
     </div>
@@ -124,14 +124,6 @@ function fetchingUser(id) {
   document.getElementById('ativo').checked = usuario.value.ativo;
 }
 
-async function editUser(id, editUser) {
-  if (editUser) {
-    await updateUser(id);
-  } else {
-    await activateUser(id);
-  }
-}
-
 async function updateUser(id) {
   const matricula = document.getElementById('matricula').value;
   const nome = document.getElementById('nome').value;
@@ -158,13 +150,14 @@ async function updateUser(id) {
 }
 
 async function activateUser(id) {
+  usuario.value = data.value.find((user) => user.id === id);
   const ativo = !usuario.value.ativo;
 
   const body = JSON.stringify({
     ativo,
   });
 
-  await fetch(`http://localhost:8080/usuarios/${id}`, {
+  const responseTestes = await fetch(`http://localhost:8080/usuarios/status/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
