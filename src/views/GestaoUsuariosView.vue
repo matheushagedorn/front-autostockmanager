@@ -157,7 +157,7 @@ async function activateUser(id) {
     ativo,
   });
 
-  const responseTestes = await fetch(`http://localhost:8080/usuarios/status/${id}`, {
+  await fetch(`http://localhost:8080/usuarios/status/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -175,7 +175,7 @@ function deleteUser(id) {
     headers: {
       'Content-Type': 'application/json',
     },
-  });
+});
 
   alert('Usuário excluído com sucesso!');
   listar();

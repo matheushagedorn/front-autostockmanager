@@ -47,7 +47,7 @@
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          <i class="fa-solid fa-user"></i>
+          <i class="fa-solid fa-user me-2"></i>
           <strong>{{ usuario }}</strong>
         </a>
         <ul
@@ -62,6 +62,7 @@
       </div>
     </div>
     <div class="b-example-divider"></div>
+    <router-view/>
   </main>
 </template>
 
@@ -96,6 +97,11 @@ const modulos = [
     name: "Gestão de veículos",
     href: "/gestao-veiculos",
     icon: "fa-solid fa-car",
+  },
+  {
+    name: "Gestão de usuários",
+    href: "/gestao-usuarios",
+    icon: "fa-solid fa-user",
   },
 ];
 
@@ -195,6 +201,7 @@ main {
   background-color: transparent;
   border: 0;
 }
+
 .btn-toggle:hover,
 .btn-toggle:focus {
   color: rgba(0, 0, 0, 0.85);
@@ -212,6 +219,7 @@ main {
 .btn-toggle[aria-expanded="true"] {
   color: rgba(0, 0, 0, 0.85);
 }
+
 .btn-toggle[aria-expanded="true"]::before {
   transform: rotate(90deg);
 }
@@ -223,6 +231,7 @@ main {
   margin-left: 1.25rem;
   text-decoration: none;
 }
+
 .btn-toggle-nav a:hover,
 .btn-toggle-nav a:focus {
   background-color: #d2f4ea;
@@ -235,16 +244,9 @@ main {
 .fw-semibold {
   font-weight: 600;
 }
+
 .lh-tight {
   line-height: 1.25;
 }
 
-.fa-user {
-  font-size: 1rem;
-  border-radius: 50%;
-  margin-right: 0.5rem;
-}
-.fa-user:focus {
-  border: 1px solid black;
-}
 </style>

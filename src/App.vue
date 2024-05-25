@@ -7,6 +7,7 @@ const router = useRouter()
 onBeforeMount(() => {
   router.push({ name: 'login' })
 })
+
 </script>
 
 <template>
