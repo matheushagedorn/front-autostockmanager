@@ -6,8 +6,8 @@
         <p>Escolha um dos módulos à esquerda para utilizar o sistema</p>
       </div>
     </div>
-  </template>
+</template>
   
-  <script setup>
+<script setup>
   import TituloPagina from '../components/TituloPagina.vue';
 </script>
