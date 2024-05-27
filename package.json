@@ -1,20 +1,21 @@
 {
   "name": "front-autostockmanager",
-  "version": "1.0.0",
-  "description": "This template should help get you started developing with Vue 3 in Vite.",
-  "main": "vite.config.js",
-  "devDependencies": {},
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/matheushagedorn/front-autostockmanager.git"
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "sweetalert2": "^11.11.0",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.2"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/matheushagedorn/front-autostockmanager/issues"
-  },
-  "homepage": "https://github.com/matheushagedorn/front-autostockmanager#readme"
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "sass": "^1.77.1"
+  }
 }

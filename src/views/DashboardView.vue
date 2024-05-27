@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 <template>
   <main>
     <div
@@ -48,7 +47,7 @@
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          <i class="fa-solid fa-user"></i>
+          <i class="fa-solid fa-user me-2"></i>
           <strong>{{ usuario }}</strong>
         </a>
         <ul
@@ -63,9 +62,8 @@
       </div>
     </div>
     <div class="b-example-divider"></div>
-    <router-view></router-view>
+    <router-view/>
   </main>
-
 </template>
 
 <script setup>
@@ -203,6 +201,7 @@ main {
   background-color: transparent;
   border: 0;
 }
+
 .btn-toggle:hover,
 .btn-toggle:focus {
   color: rgba(0, 0, 0, 0.85);
@@ -220,6 +219,7 @@ main {
 .btn-toggle[aria-expanded="true"] {
   color: rgba(0, 0, 0, 0.85);
 }
+
 .btn-toggle[aria-expanded="true"]::before {
   transform: rotate(90deg);
 }
@@ -231,6 +231,7 @@ main {
   margin-left: 1.25rem;
   text-decoration: none;
 }
+
 .btn-toggle-nav a:hover,
 .btn-toggle-nav a:focus {
   background-color: #d2f4ea;
@@ -243,80 +244,9 @@ main {
 .fw-semibold {
   font-weight: 600;
 }
+
 .lh-tight {
   line-height: 1.25;
 }
 
-.fa-user {
-  font-size: 1rem;
-  border-radius: 50%;
-  margin-right: 0.5rem;
-}
-.fa-user:focus {
-  border: 1px solid black;
-}
 </style>
-=======
-<template>
-    <div class="bg-blue-400">
-      <div class="navbar-container">
-        <section>
-          <img src="/src/assets/img/car.png" alt="" />
-          <p>AutoStock</p>
-        </section>
-        <router-link v-for="item in modulos" :key="item.name" :to="item.href">
-          <button>{{ item.name }}</button>
-        </router-link>
-      </div>
-      <div class="navbar-container-perfil">
-        <section>
-          <div class="navbar-container-perfil-user">
-            <div class="navbar-container-perfil-user-btn">
-              <button @click="menuUsuario">
-                <i class="fa-solid fa-user"></i>
-                &nbsp; {{ usuario }}
-              </button>
-            </div>
-          </div>
-          <!-- DROPDOWN -->
-          <div class="navbar-container-perfil-user-btn-menu" v-if="abreMenu">
-            <i class="fa-solid fa-pen-to-square"></i>
-            <button @click="editarPerfil">Meu perfil</button>
-            <br>
-            <i class="fa-solid fa-chevron-right chevron"></i>
-            <button @click="sair">Sair</button>
-          </div>
-        </section>
-      </div>
-    </div>
-    <router-view />
-  </template>
-  
-  <script setup>
-  import { ref } from "vue";
-  import { useRouter } from "vue-router";
-  
-  const router = useRouter();
-  const usuario = ref("Matheus Hagedorn");
-  const abreMenu = ref(false);
-  
-  async function sair() {
-    await router.push({ name: "login" });
-  }
-  
-  function menuUsuario() {
-    abreMenu.value = !abreMenu.value;
-  }
-  
-  const modulos = [
-    {
-      name: "Home",
-      href: "/home",
-    },
-    {
-      name: "Gestão de veículos",
-      href: "/gestao-veiculos",
-    },
-  ];
-  </script>
->>>>>>> Stashed changes
