@@ -63,7 +63,9 @@
       </div>
     </div>
     <div class="b-example-divider"></div>
+    <router-view></router-view>
   </main>
+
 </template>
 
 <script setup>
@@ -97,6 +99,11 @@ const modulos = [
     name: "Gestão de veículos",
     href: "/gestao-veiculos",
     icon: "fa-solid fa-car",
+  },
+  {
+    name: "Gestão de usuários",
+    href: "/gestao-usuarios",
+    icon: "fa-solid fa-user",
   },
 ];
 
