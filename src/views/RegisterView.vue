@@ -10,7 +10,7 @@
                     <label for="matricula">Matrícula do usuário</label>
                 </div>
                 <div class="form-floating">
-                    <input type="number" class="form-control" id="cpf" placeholder="CPF do usuário">
+                    <input type="number" class="form-control" id="cpf" placeholder="CPF do usuário" maxlength="11">
                     <label for="cpf">CPF</label>
                 </div>
                 <div class="form-floating">

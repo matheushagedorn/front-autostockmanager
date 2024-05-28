@@ -11,8 +11,8 @@
         <img
           src="/src/assets/img/car.png"
           class="bi me-2"
-          width="40"
-          height="32"
+          width="48"
+          height="48"
           alt="Carro"
         />
         <span class="fs-4">Autostock</span>
