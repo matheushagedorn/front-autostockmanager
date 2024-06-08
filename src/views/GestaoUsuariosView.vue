@@ -1,51 +1,63 @@
 <template>
-  <div class="d-flex justify-content-center align-items-center vh-100">
-    <div>
+  <div class="d-flex justify-content-center align-items-center w-100 vh-100">
+    <div class="col-10">
       <TituloPagina
         titulo="Gestão de usuários"
-        class="gestao-usuarios-container-title"
         link="/home"
       />
-      <table>
-        <tr>
-          <th>#</th>
-          <th>Matricula</th>
-          <th>Nome</th>
-          <th>Email</th>
-          <th>Status</th>
-        </tr>
-        <tr v-for="(usuario, index) in data" :key="usuario.id">
-          <td class="text-center pe-2">{{ index + 1 }}</td>
-          <td>{{ usuario.matricula }}</td>
-          <td>{{ usuario.nome }}</td>
-          <td>{{ usuario.email }}</td>
-          <td><i :class="['fa-solid', usuario.ativo ? 'fa-check' : 'fa-xmark']"></i></td>
-          <td>
-            <div class="dropdown">
-              <button class="btn btn-outline-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                ...
-              </button>
-              <ul class="dropdown-menu">
-                <li>
-                  <button class="dropdown-item" @click="activateUser(usuario.id)">
-                    <i :class="['fa-solid', usuario.ativo ? 'fa-xmark' : 'fa-check']"></i> Ativar/Inativar
+      <hr>
+      <div class="input-group mb-3 col-3">
+        <span class="input-group-text" id="basic-addon2">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </span>
+        <input type="text" class="form-control" placeholder="Procurar..." aria-label="Procurar..." aria-describedby="basic-addon2">
+      </div>
+      <div class="container-fluid" style="height: 40rem; overflow-y: scroll">
+        <table class="table table-light table-striped table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">#</th>
+              <th>Matricula</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(usuario, index) in data" :key="usuario.id">
+              <td class="text-center">{{ index + 1 }}</td>
+              <td>{{ usuario.matricula }}</td>
+              <td>{{ usuario.nome }}</td>
+              <td>{{ usuario.email }}</td>
+              <td><i :class="['fa-solid', usuario.ativo ? 'fa-check' : 'fa-xmark']"></i></td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-outline-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    ...
                   </button>
-                </li>
-                <li>
-                  <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal_edicao" @click="fetchingUser(usuario.id)">
-                    <i class="fa-solid fa-pen"></i> Editar
-                  </button>
-                </li>
-                <li>
-                  <button class="dropdown-item" @click="deleteUser(usuario.id)">
-                    <i class="fa-solid fa-trash"></i> Excluir
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-      </table>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <button class="dropdown-item" @click="activateUser(usuario.id)">
+                        <i :class="['fa-solid', usuario.ativo ? 'fa-xmark' : 'fa-check']"></i> Ativar/Inativar
+                      </button>
+                    </li>
+                    <li>
+                      <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal_edicao" @click="fetchingUser(usuario.id)">
+                        <i class="fa-solid fa-pen"></i> Editar
+                      </button>
+                    </li>
+                    <li>
+                      <button class="dropdown-item" @click="deleteUser(usuario.id)">
+                        <i class="fa-solid fa-trash"></i> Excluir
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 

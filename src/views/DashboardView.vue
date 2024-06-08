@@ -55,7 +55,9 @@
           aria-labelledby="dropdownUser2"
         >
           <li><a class="dropdown-item" href="#">Configurações</a></li>
-          <li><a class="dropdown-item" href="#">Perfil</a></li>
+          <li>
+            <router-link to="perfil"><a class="dropdown-item">Perfil</a></router-link>
+          </li>
           <li><hr class="dropdown-divider" /></li>
           <li><a class="dropdown-item" @click="sair">Sair</a></li>
         </ul>
@@ -78,6 +80,8 @@ const moduloAtivo = ref('/home');
 async function sair() {
   await router.push({ name: "login" });
 }
+
+console.log(userData);
 
 function menuUsuario() {
   abreMenu.value = !abreMenu.value;
