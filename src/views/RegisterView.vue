@@ -68,7 +68,6 @@ async function cadastrar() {
         return;
     }
 
-    
     if (senha !== confirmaSenha) {
         Swal.fire({
             title: "Erro ao cadastrar usuário!",
@@ -85,6 +84,7 @@ async function cadastrar() {
         },
         body: JSON.stringify({
             matricula: matricula,
+            cpf: cpf,
             senha: senha,
             nome: nomeCompleto,
             email: email,

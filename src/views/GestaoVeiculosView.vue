@@ -65,7 +65,6 @@ async function listar() {
 
     let responseData = await response.json();
     data.value = responseData;
-    console.log(data.value);
   } catch (error) {
     console.error('Error fetching carros:', error);
   }

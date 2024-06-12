@@ -23,22 +23,21 @@ async function login() {
     data.value = responseData
 
     if (data.value.senha === senha) {
-      localStorage.setItem('user', JSON.stringify(userData.value));
       router.push({ name: 'home' });
+      localStorage.setItem('usuario', JSON.stringify(data.value));
     } else {
       Swal.fire({
-            title: "Senha incorreta!",
-            text: "A senha informada está incorreta. Digite sua senha e tente novamente.",
-            icon: "error"
+        title: "Senha incorreta!",
+        text: "A senha informada está incorreta. Digite sua senha e tente novamente.",
+        icon: "error"
       });
     }
   } catch (error) {
-    console.log(error)
-    // Swal.fire({
-    //     title: "Usuário não encontrado!",
-    //     text: "Nenhum usuário foi encontrado com a matrícula informada. Verifique se a matrícula está correta e tente novamente.",
-    //     icon: "error"
-    // });
+    Swal.fire({
+      title: "Usuário não encontrado!",
+      text: "Nenhum usuário foi encontrado com a matrícula informada. Verifique se a matrícula está correta e tente novamente.",
+      icon: "error"
+    });
   }
 }
 </script>

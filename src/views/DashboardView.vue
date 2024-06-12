@@ -73,7 +73,7 @@ import { ref , watch } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-const usuario = ref("Matheus Hagedorn");
+const usuario = ref("");
 const abreMenu = ref(false);
 const moduloAtivo = ref('/home');
 
@@ -81,7 +81,12 @@ async function sair() {
   await router.push({ name: "login" });
 }
 
-console.log(userData);
+if (localStorage.getItem("usuario") === null) {
+  router.push({ name: "login" });
+} else {
+  const usuarioLogado = JSON.parse(localStorage.getItem("usuario"));
+  usuario.value = usuarioLogado.nome;
+}
 
 function menuUsuario() {
   abreMenu.value = !abreMenu.value;

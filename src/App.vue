@@ -10,10 +10,6 @@ const userData = ref(null);
 onBeforeMount(() => {
   router.push({ name: 'login' })
 })
-
-if (localStorage.getItem('user')) {
-  userData.value = JSON.parse(localStorage.getItem('user'));
-}
 </script>
 
 <template>
