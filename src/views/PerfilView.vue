@@ -98,6 +98,7 @@
   
 <script setup>
 import { onMounted, ref } from "vue";
+import Swal from 'sweetalert2'
 
 const usuario = ref({});
 
@@ -110,6 +111,20 @@ onMounted(() => {
     fetchingUser(usuario.id);
   }
 });
+
+async function fetchingUser(id) {
+  const response = await fetch(`http://localhost:8080/usuarios/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body,
+  });
+
+  let responseData = await response.json();
+  usuario.value = responseData
+  console.log(usuario.value)
+}
 
 async function updateUser(id) {
   const matricula = document.getElementById('matricula').value;
@@ -132,8 +147,11 @@ async function updateUser(id) {
     body,
   });
 
-  alert('Usuário atualizado com sucesso!');
-  listar();
+  Swal.fire({
+      title: "Usuário alterado!",
+      text: "Usuário alterado com sucesso.",
+      icon: "success"
+  });
 }
 
 function deleteUser(id) {
@@ -144,8 +162,15 @@ function deleteUser(id) {
     },
   });
 
-  alert('Usuário excluído com sucesso!');
-  listar();
+  Swal.fire({
+      title: "Erro ao cadastrar usuário!",
+      text: "Verifique se as senhas se coincidem e tente novamente.",
+      icon: "error"
+  }).then((result) => {
+    if (result.isConfirmed) {
+        router.push({ name: 'login' });
+    }
+  });
 }
 
 </script>

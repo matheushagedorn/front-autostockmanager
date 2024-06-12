@@ -6,12 +6,6 @@
         link="/home"
       />
       <hr>
-      <div class="input-group mb-3 col-3">
-        <span class="input-group-text" id="basic-addon2">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </span>
-        <input type="text" class="form-control" placeholder="Procurar..." aria-label="Procurar..." aria-describedby="basic-addon2">
-      </div>
       <div class="container-fluid" style="height: 40rem; overflow-y: scroll">
         <table class="table table-light table-striped table-hover">
           <thead>
