@@ -42,12 +42,38 @@
         </div>
       </div>
       <div class="d-flex justify-content-between align-items-center mt-4 gap-4">
-        <button class="btn btn-danger fs-5 fw-semibold">
+        <button class="btn btn-danger fs-5 fw-semibold" data-bs-toggle="modal" data-bs-target="#modal_confirmacao_delete">
           Excluir
         </button>
         <button class="btn btn-warning fs-5 fw-semibold" data-bs-toggle="modal" data-bs-target="#modal_edicao_usuario">
           Editar
         </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal_confirmacao_delete" tabindex="-1" aria-labelledby="modal_confirmacao_delete" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modal_confirmacao_delete"><i class="fa-solid fa-pen pe-2"></i>Confirme deleção</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex flex-column justify-content-center align-items-center py-3">
+            <p class="fs-5 m-0">
+              Você tem certeza que deseja excluir o usuário <b>{{ usuario.nome }}</b>?
+            </p>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-between">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
+            <i class="fa-solid fa-close pe-2"></i>Cancelar
+          </button>
+          <button type="button" class="btn btn-outline-danger" @click="deleteUser(usuario.id)">
+            <i class="fa-solid fa-trash pe-2"></i>Excluir
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -108,7 +134,7 @@ onMounted(() => {
   } else {
     const usuarioLogado = JSON.parse(localStorage.getItem("usuario"));
     usuario.value = usuarioLogado;
-    fetchingUser(usuario.id);
+    fetchingUser(usuario.value.id);
   }
 });
 
@@ -118,12 +144,12 @@ async function fetchingUser(id) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body,
   });
 
   let responseData = await response.json();
   usuario.value = responseData
-  console.log(usuario.value)
+
+  localStorage.setItem('usuario', JSON.stringify(usuario.value));
 }
 
 async function updateUser(id) {
@@ -148,10 +174,12 @@ async function updateUser(id) {
   });
 
   Swal.fire({
-      title: "Usuário alterado!",
-      text: "Usuário alterado com sucesso.",
-      icon: "success"
-  });
+    title: "Usuário alterado!",
+    text: "Usuário alterado com sucesso.",
+    icon: "success"
+  }).then((result) => {
+    fetchingUser(id);
+  })
 }
 
 function deleteUser(id) {
@@ -163,12 +191,12 @@ function deleteUser(id) {
   });
 
   Swal.fire({
-      title: "Erro ao cadastrar usuário!",
-      text: "Verifique se as senhas se coincidem e tente novamente.",
-      icon: "error"
+    title: "Usuário deletado!",
+    text: "Usuário deletado com sucesso.",
+    icon: "success"
   }).then((result) => {
     if (result.isConfirmed) {
-        router.push({ name: 'login' });
+      router.push({ name: 'login' });
     }
   });
 }
