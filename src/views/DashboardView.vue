@@ -54,8 +54,9 @@
           class="dropdown-menu text-small shadow"
           aria-labelledby="dropdownUser2"
         >
-          <li><a class="dropdown-item" href="#">Configurações</a></li>
-          <li><a class="dropdown-item" href="#">Perfil</a></li>
+          <li>
+            <router-link to="perfil"><a class="dropdown-item">Perfil</a></router-link>
+          </li>
           <li><hr class="dropdown-divider" /></li>
           <li><a class="dropdown-item" @click="sair">Sair</a></li>
         </ul>
@@ -71,20 +72,19 @@ import { ref , watch } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-const usuario = ref("Matheus Hagedorn");
-const abreMenu = ref(false);
+const usuario = ref("");
+const usuarioLogado = ref({});
 const moduloAtivo = ref('/home');
 
 async function sair() {
   await router.push({ name: "login" });
 }
 
-function menuUsuario() {
-  abreMenu.value = !abreMenu.value;
-}
-
-function editarPerfil() {
-  console.log("Editar perfil clicado");
+if (localStorage.getItem("usuario") === null) {
+  router.push({ name: "login" });
+} else {
+  usuarioLogado.value = JSON.parse(localStorage.getItem("usuario"));
+  usuario.value = usuarioLogado.value.nome;
 }
 
 const modulos = [
@@ -103,10 +103,18 @@ const modulos = [
     href: "/gestao-usuarios",
     icon: "fa-solid fa-user",
   },
+  {
+    name: "Cadastro de eventos",
+    href: "/gestao-eventos",
+    icon: "fa-regular fa-calendar",
+  },
 ];
 
 watch(() => router.currentRoute.value.path, (newPath) => {
   moduloAtivo.value = newPath;
+  
+  usuarioLogado.value = JSON.parse(localStorage.getItem("usuario"));
+  usuario.value = usuarioLogado.value.nome;
 });
 
 (function () {
